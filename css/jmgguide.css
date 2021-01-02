@@ -1,0 +1,461 @@
+﻿/* RESET (So viel wie nötig) */
+
+ul {
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+    line-height: 1.2;
+}
+
+p {
+    margin: 0;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    color: #333;
+    font-size: 100%;
+    background-color: #eee;
+    overflow-y: scroll;
+    margin: 0;
+}
+
+a {
+    color: inherit;
+}
+
+/* Loading icon */
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.laden-icon {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    border: 0.2rem solid #ddd;
+    border-top-color: #333;
+    -webkit-animation: spin 1s cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
+    animation: spin 1s cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
+    display: inline-block;
+    margin: 0 8px;
+}
+
+.item.laden {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 0;
+}
+
+
+/* Basiscontainer */
+
+.container {
+    width: 100%;
+}
+
+.steuer {
+    background-color: #5a7295;
+}
+
+.auswahl {
+    color: white;
+    background-color: #5a7295;
+}
+
+.auswahl .header {
+    font-weight: bold;
+    font-size: 1.3em;
+    cursor: pointer;
+    padding: 8px;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+/*
+  Pfeil rechts neben der Auswahl.
+*/
+
+.auswahl .header:after {
+    content: " ";
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    float: right;
+    background-repeat: no-repeat;
+    background-size: 32px 32px;
+    transform: scaleY(1);
+    margin: -3px -4px;
+    background-image: url("../img/pfeil.png");
+    transition: transform .2s ease;
+}
+
+.auswahl .header.expand:after {
+    transform: scaleY(-1);
+}
+
+
+/*
+  Größe in ems weil nicht von physikalischer
+  Pixelgröße abhängig. (blockiert Mobilgeräte in
+  Landscapemodus)
+*/
+
+.auswahl .optionen {
+    background-color: #355177;
+    display: none;
+    height: 9em;
+    overflow-y: scroll;
+}
+
+.auswahl .optionen li {
+    padding: 8px;
+    background-color: transparent;
+    transition: background-color .2s ease;
+}
+
+.auswahl .optionen li:hover {
+    background-color: #5a7295;
+}
+
+.tabs {
+    background-color: white;
+    display: flex;
+}
+
+.tabs .optionen {
+    display: flex;
+    width: 100%;
+}
+
+/*
+  Tabs basieren auf Flex um deren Breite dynamisch 
+  darzustellen (nur mobil).
+*/
+
+.tabs .optionen li {
+    flex-basis: 0;
+    flex-grow: 1;
+    padding: 8px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: flex-grow .2s ease;
+    color: #aaa;
+    background-color: transparent;
+    transition: all .2s ease;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+/*
+  Ist der Tab nicht ausgewählt wird nur das Kürzel
+  angezeigt.
+*/
+
+.tabs .optionen li .kurz {
+    display: inline;
+}
+
+.tabs .optionen li .lang {
+    display: none;
+}
+
+
+/*
+  Ist der Tab ausgewählt wird nur das volle Datum
+  angezeigt. Das wird über JS gesteuert.
+*/
+
+.tabs .optionen li.ausgewaehlt .lang {
+    display: inline;
+}
+
+.tabs .optionen li.ausgewaehlt .kurz {
+    display: none;
+}
+
+.tabs .optionen li:hover {
+    background-color: #ddd;
+}
+
+.tabs .optionen li.ausgewaehlt {
+    flex-grow: 4;
+    background-color: #5a7295;
+    color: white;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.listing {
+    background-color: white;
+}
+
+.item {
+    padding: 8px;
+}
+
+
+/*
+  Vertretungsplaneintrag.
+*/
+
+.item.eintrag {
+    display: flex;
+    flex-basis: 0;
+    align-items: baseline;
+    border-bottom: 1px solid #ccc;
+    padding: 8px 8px 12px;
+}
+
+.item.eintrag .stunde {
+    color: white;
+    flex-shrink: 0;
+    font-size: 1.3em;
+    background: #5a7295;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+    width: 40px;
+    font-weight: bold;
+    text-align: center;
+    height: 40px;
+    line-height: 2;
+    box-shadow: 1px 1px 0 0 #355177;
+    border-radius: 3px;
+}
+
+.item.eintrag .meta {
+    margin-left: 4px;
+    flex-grow: 1;
+}
+
+.item.eintrag .meta li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.item.eintrag .meta li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.item.eintrag .meta li p {
+    font-size: 1em;
+    margin: 0 12px;
+}
+
+.item.eintrag .meta li p:first-child {
+    font-size: 1.3em;
+}
+
+/*
+  Information (Akzentfarbe)
+*/
+
+.item.info {
+    background-color: #b63c47;
+    color: white;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.item.meta {
+    font-size: .8em;
+}
+
+.item.login {
+    padding: 0;
+}
+
+.item.login .info {
+    padding: 8px;
+}
+
+.item.login form {
+    display: flex;
+    flex: 0 0 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.item.login form .absenden,
+.item.login form .passwort {
+    font: inherit;
+    border: none;
+    background-color: transparent;
+    padding: 8px;
+}
+
+.item.login form .absenden {
+    font-weight: bold;
+}
+
+.item.login form .passwort {
+    flex-grow: 1;
+    border-right: 1px solid #ccc;
+}
+
+.item.lokal .beschreibung {
+    display: none;
+    margin: 8px 0;
+}
+
+.item.lokal .spoiler:before {
+    font-size: .8em;
+    cursor: pointer;
+    text-decoration: underline;
+    content: "Warum wird mir das angezeigt?";
+}
+
+.item.lokal .spoiler.aktiviert:before {
+    content: "Okay, hab's verstanden.";
+}
+
+.footer {
+    color: #ccc;
+    text-align: center;
+    padding: 8px 0;
+    font-size: .7em;
+}
+
+.wrapper {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.templates {
+    display: none;
+}
+
+/* Anpassung an Desktop (mobile first) */
+
+@media only screen and (min-width: 700px) {
+    /*
+    Container für Eingabeelemente soll normalen Bereich
+    überlappen und hinter dem Listing stehen.
+  */
+    .steuer {
+        padding-bottom: 96px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+    }
+    /*
+    Auswahl auf feste Breite bringen.
+  */
+    .auswahl .header {
+        width: 700px;
+        margin: 0 auto;
+    }
+    /* 
+    Auswahlelemente auf feste Breite bringen.
+  */
+    .auswahl .optionen li {
+        margin: 0 auto;
+        width: 700px;
+        box-sizing: border-box;
+    }
+    /*
+    Listing auf feste Breite bringen und über
+    Container für Eingabeelemente legen.
+  */
+    .listing {
+        width: 600px;
+        margin: -64px auto 0;
+        overflow: auto;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+        /* 
+      Der Container braucht einen größeren Radius weil sonst
+      beim identischen Radius eine hässliche Überlagerung
+      stattfindet. Einfach nicht fragen und hinnehmen.
+    */
+        border-radius: 3px;
+    }
+    /*
+    Tabs auf feste Breite bringen.
+  */
+    .tabs .optionen {
+        width: 700px;
+        margin: 0 auto;
+    }
+    /*
+    Tabeinträge auf feste Breite bringen.
+  */
+    .tabs .optionen li {
+        box-sizing: border-box;
+        flex-grow: 1 !important;
+    }
+    /*
+    MO, DI, MI, DO, FR nie anzeigen.
+  */
+    .tabs .optionen li .kurz {
+        display: inline !important;
+        position: relative;
+        top: -.1em;
+        font-size: .7em;
+    }
+    /*
+    Volles Datum immer anzeigen.
+  */
+    .tabs .optionen li .lang {
+        display: inline;
+    }
+    
+    .wrapper {
+        box-shadow: none;
+    }
+}
+
+/*
+    Modernizr
+*/
+
+.no-flexbox .tabs .optionen {
+    display: table;
+}
+
+.no-flexbox .tabs .optionen li {
+    display: table-cell;
+    width: 15%;
+    transition: width .2s ease;
+}
+
+.no-flexbox .tabs .optionen li.ausgewaehlt {
+    width: 40%;
+}
+
+.no-flexbox .item.eintrag .stunde {
+    float: left;
+}
+
+.no-flexbox:not(.ie10) .item.eintrag .meta {
+  margin-left: 48px;
+}
+
+@media only screen and (min-width: 700px) {
+    
+    .no-flexbox .tabs .optionen li {
+        width: 20% !important;
+    }
+    
+}

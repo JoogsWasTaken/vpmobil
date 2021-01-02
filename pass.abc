@@ -1,0 +1,15 @@
+11a3c6434a6a182d7145001a2394bdb30b1adffbf78c97296a52b3385c7f39a2
+TGK/$58fb$&jhzufjk,lkl:nHJ78%4jm+#gbf
+
+/**  Wenn ein neues Passwort gewählt wird, bitte folgende Schritte befolgen:
+        
+            1) Neuen Salt ausdenken. Schön lang und mit komplizierten Zeichen, bitte.
+            
+            2) Neues Passwort ausdenken. Kurz aber sinnlos.
+            
+            3) Neuen SALT und neues Passwort in die vorbereitete Cryptool2-Datei eingeben und HASH generieren lassen.
+
+            4) Neuen HASH und den verwendeten SALT in die ersten beiden Zeilen dieser Datei schreiben, also 1. Zeile HASH und 2. Zeile SALT.
+
+            5) Das neue Passwort an einer sicheren Stelle aufbewahren (NICHT ONLINE!!!) und nur autorisierten Personen (Schülern, Lehrern, Eltern)
+**/

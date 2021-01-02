@@ -1,0 +1,74 @@
+﻿Legende:
+
+    + neues Feature
+    ~ geändertes Feature
+    - Kommentar
+    
+=======================================================================
+
+Version 1.1.1 / "Fuego" (07.08.2016)
+
+    + App Manifest zum Cachen von Webseiteninhalten (nur HTML5)
+    ~ Cache-Header entfernt
+    
+    - Viel Erfolg den neuen 12ern auf dem Weg zum Abitur und allen
+      anderen Schülern für allzeit gute Klausuren und gnädige Lehrer.
+      Die Verantwortung für die Instandhaltung des Vertretungsplans
+      wird sehr bald [ personal info redacted ] mit der Überreichung 
+      der Dokumentation übernehmen.
+
+Version 1.1.0 / "Kuaga" (27.05.2016)
+
+    + Neues Design (wohoo!)
+    + Vertretungspläne können aus dem Cache geladen werden
+    + Voller Support für IE9
+    ~ Umleitungen komplett obsolet, alles kompakt auf einer Seite
+    ~ Umstrukturierung des Backends
+    ~ Abfragen der Vertretungspläne effizienter
+    ~ Cache läuft nun nach 18 Stunden aus
+    
+Version 1.0.5 / "Automaton" (06.01.2015)
+
+    ~ Verifizierungsverfahren verbessert
+    ~ Javascript auf Login-Seite obsolet
+    ~ Passworteingabe und Button zum Absenden auf eine Zeile
+      gerückt
+      
+Version 1.0.4 / "Abacus" (08.12.2015)
+
+    + Vertretungspläne werden lokal gespeichert
+    + Aktualisierung der Vertretungspläne nur noch wenn nötig
+    ~ Umstrukturierung des Backends
+    
+Version 1.0.3c / "Overtime" (16.11.2015)
+
+    + Leere Fußzeilen werden nicht mehr angezeigt
+    + Sprung bei Wochentagen behoben
+    + Änderung der Klasse/des Tages während des Ladens zeigt jetzt
+      durchgängig Ladeinformation an
+      
+Version 1.0.3b / "Dechorro" (01.11.2015)
+
+    ~ Altes Favicon wieder eingeführt
+    
+Version 1.0.3a / "Language" (31.10.2015)
+
+    + Uniformierung der API-Antworten
+    ~ Verbesserte Orthografie
+    
+Version 1.0.2 / "Stay" (07.09.2015)
+
+    + Eight
+    ~ Cache läuft nun nach 12 Stunden aus
+    
+Version 1.0.1 / "Got No Strings" (26.08.2015)
+
+    + Login-Seite nicht mehr manuell aufrufbar wenn die
+      Anmeldedaten gültig sind
+    + Cache-Header für dynamischen Content (ja, sowas vergisst man)
+    ~ Keyword "const" in Javascript-Dateien entfernt (Syntax-Fehler
+      in IE10 und früher)
+      
+Version 1.0.0 / "Technicolor" (21.08.2015)
+
+    - Release
